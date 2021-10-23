@@ -62,3 +62,5 @@ def get_date_and_times(number_of_chunks, deadline, event_name):
                     break
 
     return list_date_times
+
+print (test_allocation("Hackathon", "2021-10-26", 4, 1))
