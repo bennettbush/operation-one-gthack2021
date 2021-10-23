@@ -1,6 +1,4 @@
 
-
-
 from __future__ import print_function
 import datetime
 import os.path
@@ -39,56 +37,52 @@ def start():
 
 # name and date are strings, startTime integer
 # date format: YYYY-MM-D
-<<<<<<< Updated upstream
 def insert_1(service, name, date, startTime):
+    insert_2(service, name, date, startTime, startTime+1)
+
     
-    startTime = date + 'T' + str(startTime) + ":00:00-04:00"
-    endTime = date + 'T' + str(startTime + 1) + ":00:00-04:00"
-
-    event = {
-        'summary': name,
-        'start': {
-            'dateTime': startTime,
-        },
-        'end': {
-            'dateTime': endTime,
-        },
-    }
+def insert_2(service, name, date, startTime, endTime):
+    startTime = format_startTime(date, startTime)
+    endTime = format_endTime(date, endTime)
+    event = format_event1(name, date, startTime, endTime)
     event = service.events().insert(calendarId='primary', body=event).execute()
-
-def insert_2(servive, name, date, startTime, endTime):
-
-    startTime = date + 'T' + str(startTime) + ":00:00-04:00"
-    endTime = date + 'T' + str(endTime) + ":00:00-04:00"
-=======
-def insert_1(service, name, date, startTime): 
-    insert_2(service, name, date, startTime, 1)
-
-def insert_2(servive, name, date, startTime, endTime):
-    startTime = date + 'T' + str(startTime) + ":00:00-04:00"
-    endTime = date + 'T' + format_endTime(endTime) + ":00:00-04:00"
->>>>>>> Stashed changes
-
-    event = {
-        'summary': name,
-        'start': {
-            'dateTime': startTime,
-        },
-        'end': {
-            'dateTime': endTime,
-        },
-    }
+    
 
 def insert_3(service, name, date, startTime, endTime, address):
-<<<<<<< Updated upstream
+    startTime = format_startTime(date, startTime)
+    endTime = format_endTime(date, endTime)
+    event = format_event2(name, date, startTime, endTime, address)
+    event = service.events().insert(calendarId='primary', body=event).execute()
+    
 
-    startTime = date + 'T' + str(startTime) + ":00:00-04:00"
-    endTime = date + 'T' + str(endTime) + ":00:00-04:00"
-=======
-    startTime = date + 'T' + str(startTime) + ":00:00-04:00"
-    endTime = date + 'T' + format_endTime(endTime) + ":00:00-04:00"
->>>>>>> Stashed changes
+def format_startTime(date, startTime):
+    if startTime < 10:
+        return date + "T" + "0" + str(startTime) + ":00:00-04:00"
+    else:
+        return date + "T" + str(startTime) + ":00:00-04:00"
 
+
+def format_endTime(date, endTime):
+    if endTime < 10:
+        return date + "T" + "0" + str(endTime) + ":00:00-04:00"
+    else:
+        return date + "T" + str(endTime) + ":00:00-04:00"
+    
+   
+def format_event1(name, date, startTime, endTime):
+    event = {
+        'summary': name,
+        'start': {
+            'dateTime': startTime,
+        },
+        'end': {
+            'dateTime': endTime,
+        },
+    }
+    print(event)
+    return event
+
+def format_event2(name, date, startTime, endTime, address):
     event = {
         'summary': name,
         'start': {
@@ -99,22 +93,14 @@ def insert_3(service, name, date, startTime, endTime, address):
         },
         'location': address
     }
+    print(event)
+    return event
 
-<<<<<<< Updated upstream
-=======
-
-def format_endTime(endTime):
-    if endTime < 10:
-        return "0" + str(endTime)
-    else:
-        return str(endTime)
-
->>>>>>> Stashed changes
 if __name__ == '__main__':
-    credentials = start()
-    insert_1(credentials, "insert_1", "2021-10-27", "08")
-    insert_2(credentials, "insert_2", "2021-10-30", "15", "17")
-    insert_3(credentials, "insert_3", "2021-10-25", "16" "19", "580 Turner Place NW.")
+    # credentials = start()
+    # insert_1(credentials, "insert_1", "2021-10-27", 9)
+    # insert_2(credentials, "insert_2", "2021-10-30", 15, 17)
+    # insert_3(credentials, "insert_3", "2021-10-25", 16, 19, "580 Turner Place NW.")
     
     # run insert method here with necessary input
 
