@@ -9,6 +9,8 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 
+import test_allocation_local
+
 # import pandas as pd
 # import numpy as np
 # from flask import Flask, request, jsonify
@@ -37,10 +39,21 @@ def start():
     service = build('calendar', 'v3', credentials=creds)
     return service
 
+def insertMain(service, arrayData):
+    for event in arrayData:
+        insert(service, event[0], event[1], event[2])
+
 # name and date are strings, startTime integer
-def insert(service, name, date, startTime):  
-    la = date + 'T' + str(startTime) + ":00:00-04:00"
-    la2 = date + 'T' + str(startTime + 1) + ":00:00-04:00"
+def insert(service, name, date, startTime): 
+    s = str(startTime)
+    l = str(startTime + 1)
+    if startTime < 10:
+        s = '0' + s
+    if (startTime + 1) < 10:
+        l = '0' + l
+
+    la = date + 'T' + s + ":00:00-04:00"
+    la2 = date + 'T' + l + ":00:00-04:00"
 
     event = {
         'summary': name,
@@ -57,4 +70,8 @@ def insert(service, name, date, startTime):
 
 if __name__ == '__main__':
     credentials = start()
+    test = test_allocation_local.test_allocation('testing', '2021-10-27', 3, 1)
+    #print(test)
+    insertMain(credentials,test)
+    
     # run insert method here with necessary input
