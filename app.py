@@ -38,24 +38,59 @@ def start():
     return service
 
 # name and date are strings, startTime integer
-def insert(service, name, date, startTime):  
-    la = date + 'T' + str(startTime) + ":00:00-04:00"
-    la2 = date + 'T' + str(startTime + 1) + ":00:00-04:00"
+# date format: YYYY-MM-D
+def insert_1(service, name, date, startTime):
+    
+    startTime = date + 'T' + str(startTime) + ":00:00-04:00"
+    endTime = date + 'T' + str(startTime + 1) + ":00:00-04:00"
 
     event = {
         'summary': name,
         'start': {
-            'dateTime': la,
+            'dateTime': startTime,
         },
         'end': {
-            'dateTime': la2,
+            'dateTime': endTime,
         },
     }
     event = service.events().insert(calendarId='primary', body=event).execute()
 
+def insert_2(servive, name, date, startTime, endTime):
 
+    startTime = date + 'T' + str(startTime) + ":00:00-04:00"
+    endTime = date + 'T' + str(endTime) + ":00:00-04:00"
+
+    event = {
+        'summary': name,
+        'start': {
+            'dateTime': startTime,
+        },
+        'end': {
+            'dateTime': endTime,
+        },
+    }
+
+def insert_3(service, name, date, startTime, endTime, address):
+
+    startTime = date + 'T' + str(startTime) + ":00:00-04:00"
+    endTime = date + 'T' + str(endTime) + ":00:00-04:00"
+
+    event = {
+        'summary': name,
+        'start': {
+            'dateTime': startTime,
+        },
+        'end': {
+            'dateTime': endTime,
+        },
+        'location': address
+    }
 
 if __name__ == '__main__':
     credentials = start()
+    insert_1(credentials, "insert_1", "2021-10-27", "08")
+    insert_2(credentials, "insert_2", "2021-10-30", "15", "17")
+    insert_3(credentials, "insert_3", "2021-10-25", "16" "19", "580 Turner Place NW.")
+    
     # run insert method here with necessary input
 
