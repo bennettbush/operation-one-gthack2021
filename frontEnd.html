@@ -2,7 +2,29 @@
 <html>
 <body>
 
-  <h2>What is the duration your assignment?</h2>
+  <h2>What is the name of your assignment?</h2>
+
+  <form action="/action_page.php">
+    <label for="assignment">Assignment Name:</label>
+    <input type="text" id="assignment" name="assignment"<br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <h2>What is the deadline?</h2>
+
+  <form action="/action_page.php">
+    <label for="deadline">Deadline:</label>
+    <input type="date" id="deadline" name="deadline"<br>
+    <input type="submit" value="Submit">
+  </form>
+
+  <h2>How much time will the assignment take?</h2>
+  <form action="/action_page.php">
+    <label for="durationTime">Duration (hours):</label>
+    <input type="number" min="1" step="1" id="durationTime" name="durationTime"<br>
+    <input type="submit" value="Submit">
+
+  <h2>Which days would you like to work on it?</h2>
 
   <form action="/action_page.php">
     <label for="datemin">Start time:</label>
