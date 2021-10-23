@@ -1,5 +1,6 @@
 from __future__ import print_function
 import os.path
+from webbrowser import get
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -41,60 +42,18 @@ def getCalendar():
     return events
 
 
-def addtoArray(eventsArray):
+def addtoArray():
+    eventsArray = getCalendar()
     colNum = 0
-    rowNum = 0
-
-    # index = df.index
-    # aList = list(index)
-    #print(aList)    
+    rowNum = 0   
     for event in eventsArray:
-       # start = event['start'].get('dateTime', event['start'].get('date'))
-        cd = eventsArray[0]['start'].get('dateTime')
+        cd = event['start'].get('dateTime')
         currentData = cd[:10]
         currentTime = cd[11:13]
-        df.loc[currentTime][currentData] = 'inserted!!!'
-    print(currentData == df.columns[0])
-    print(df)
-
+        df.loc[currentTime][currentData] = event.get('summary')
+    #print(df)
+    return df
     
-        #print(start, event['summary'])
-    #df.iloc[2][3] = 'inserting!!!'
-    # for event in eventsArray:
-    #     cd = eventsArray[0]['start'].get('dateTime')
-    #     currentData = cd[:10]
-    #     #print(cd[11:13])
-    #     currentTime = cd[11:13]
-    #     i = 2
-        # for column in df.columns:
-        #     if currentData == column:
-
-        #         colNum = i
-        #     else: 
-        #         i = i + 1
-        # i = 0
-        # for hour in aList:
-        #     if hour == currentTime:
-        #         rowNum = i
-        #     else:
-        #         i = i + 1
-        # print('colnum is: ' + str(colNum))
-        # print('row num is ' + str(rowNum))
-        #for hour in hourly_index:
-           # if 
-
-       
-
-    # for column in df.columns:
-    #     print('column is: ' + column)
-    #     if lalal == column:
-    #         print('match found!!!: ' + column)
-        #print(column)
-    #print(df.columns)
     
-
-
-
-
 if __name__ == '__main__':
-    addtoArray(getCalendar())
+    print(addtoArray())
