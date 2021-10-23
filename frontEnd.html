@@ -21,6 +21,27 @@
   </form>
   <input type="submit" value="Submit"> -->
 
+<script>
+// var customerName = prompt("Please enter your name","<name goes here>");
+// if (customerName! = null) {
+//   document.getElementById("welcome").innerHTML = "Hello" + customerName + "! How are you today?";
+// }
+
+// let d = new Date();
+// document.body.innerHTML = "<h1>date" + d + "</h1>"
+//
+// var name = window.prompt("Enter your name: ");
+// alert("Your name is " + name);
+
+let btn = document.createElement("button");
+btn.innerHTML = "Submit";
+btn.addEventListener("click", function(event) {
+  //alert("Button is clicked");
+  alert(this.value + " has been entered!!!!");
+});
+document.body.appendChild(btn);
+</script>
+
   <h2 style="text-align: center;">What is the name of your assignment?</h2>
 
   <form action="/action_page.php" target="_blank" method="post" style="text-align: center;">
