@@ -48,13 +48,13 @@ def get_date_and_times(number_of_chunks, deadline, event_name):
     list_date_times = []
     start_day = week_start.day
     end_day = deadline.day
-    upper_limit_loop_day = end_day - start_day + 1
+    upper_limit_loop_day = end_day - start_day + 1 # computes the number of days to loop through based off the deadline
     while (number_of_chunks > 0):
         for i in range(upper_limit_loop_day):
             if number_of_chunks == 0: # catches cases where number_of_chunks goes below 0 during loop
                 break
             for j in range(len(hourly_index)): # number of hours
-                if df.iloc[i][j] == 'No Event':
+                if df.iloc[i][j] == 'No Event': # if selected timeslot and date aren't filled, populate them with eventName
                     df.iloc[i][j] = event_name # write into the df; avoids overwriting
                     element = [event_name, columns[i], int(hourly_index[j])]
                     list_date_times.append(element)
@@ -62,6 +62,3 @@ def get_date_and_times(number_of_chunks, deadline, event_name):
                     break
 
     return list_date_times
-
-# Scripting
-print(test_allocation("Hackathon", "2021-10-27", 3, 1))
