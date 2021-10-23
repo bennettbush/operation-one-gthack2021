@@ -39,6 +39,7 @@ def start():
 
 # name and date are strings, startTime integer
 # date format: YYYY-MM-D
+<<<<<<< Updated upstream
 def insert_1(service, name, date, startTime):
     
     startTime = date + 'T' + str(startTime) + ":00:00-04:00"
@@ -59,6 +60,14 @@ def insert_2(servive, name, date, startTime, endTime):
 
     startTime = date + 'T' + str(startTime) + ":00:00-04:00"
     endTime = date + 'T' + str(endTime) + ":00:00-04:00"
+=======
+def insert_1(service, name, date, startTime): 
+    insert_2(service, name, date, startTime, 1)
+
+def insert_2(servive, name, date, startTime, endTime):
+    startTime = date + 'T' + str(startTime) + ":00:00-04:00"
+    endTime = date + 'T' + format_endTime(endTime) + ":00:00-04:00"
+>>>>>>> Stashed changes
 
     event = {
         'summary': name,
@@ -71,9 +80,14 @@ def insert_2(servive, name, date, startTime, endTime):
     }
 
 def insert_3(service, name, date, startTime, endTime, address):
+<<<<<<< Updated upstream
 
     startTime = date + 'T' + str(startTime) + ":00:00-04:00"
     endTime = date + 'T' + str(endTime) + ":00:00-04:00"
+=======
+    startTime = date + 'T' + str(startTime) + ":00:00-04:00"
+    endTime = date + 'T' + format_endTime(endTime) + ":00:00-04:00"
+>>>>>>> Stashed changes
 
     event = {
         'summary': name,
@@ -86,6 +100,16 @@ def insert_3(service, name, date, startTime, endTime, address):
         'location': address
     }
 
+<<<<<<< Updated upstream
+=======
+
+def format_endTime(endTime):
+    if endTime < 10:
+        return "0" + str(endTime)
+    else:
+        return str(endTime)
+
+>>>>>>> Stashed changes
 if __name__ == '__main__':
     credentials = start()
     insert_1(credentials, "insert_1", "2021-10-27", "08")
