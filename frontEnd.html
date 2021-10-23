@@ -4,29 +4,56 @@
 
   <h2>What is the name of your assignment?</h2>
 
-  <form action="/action_page.php">
+  <form action="/action_page.php" target="_blank" method="post">
     <label for="assignment">Assignment Name:</label>
     <input type="text" id="assignment" name="assignment"<br>
     <input type="submit" value="Submit">
   </form>
 
-  <h2>What is the deadline?</h2>
+  <h2>When is the deadline?</h2>
 
-  <form action="/action_page.php">
+  <form action="/action_page.php" target="_blank" method="post">
     <label for="deadline">Deadline:</label>
     <input type="date" id="deadline" name="deadline"<br>
     <input type="submit" value="Submit">
   </form>
 
   <h2>How much time will the assignment take?</h2>
-  <form action="/action_page.php">
+  <form action="/action_page.php" target="_blank" method="post">
     <label for="durationTime">Duration (hours):</label>
     <input type="number" min="1" step="1" id="durationTime" name="durationTime"<br>
     <input type="submit" value="Submit">
 
+  <h2>Would you like to break it into chunks?</h2>
+  <form action="/action_page.php" target="_blank" method="post">
+    <label for="chunks">Chunks:</label>
+    <select id="chunks" name="chunks">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+    <input type="submit">
+  </form>
+
+    <!-- <h2>How many days would you like to work on it?</h2>
+    <form action="/action_page.php" target="_blank" method="post">
+      <label for="daysWork">Days:</label>
+      <input type="number" min="1" step="1" id="daysWork" name="daysWork"<br>
+      <input type="submit" value="Submit">
+    </form>
+
+    <!<script>
+    var element = document.GetElementById("daysWork");
+    var contents = element.innerHTML;
+    </script> -->
+
+    <!-- <h2>You want to work <span id="daysWork"></span> days.</h2>
+    <script>
+    document.GetElementById("daysWork").innerHTML = daysWork
+    </script> -->
+<!--
   <h2>Which days would you like to work on it?</h2>
 
-  <form action="/action_page.php">
+  <form action="/action_page.php" target="_blank" method="post">
     <label for="datemin">Start time:</label>
     <input type="date" id="datemin" name="datemin" min="2021-10-01"><br><br>
 
@@ -34,7 +61,7 @@
     <input type="date" id="datemax" name="datemax" max="2021-12-31"><br><br>
 
     <input type="submit" value="Submit">
-  </form>
+  </form> -->
 
 </body>
 </html>
