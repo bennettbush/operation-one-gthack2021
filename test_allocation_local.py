@@ -7,14 +7,11 @@ import numpy as np
 import datetime as dt
 
 hourly_index = ['09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21'] # hours in military time
-columns = ['2021-10-24', '2021-10-25', '2021-10-26', '2021-10-27', '2021-10-28', '2021-10-29', '2021-10-30']
+columns = ['2021-10-24', '2021-10-25', '2021-10-26', '2021-10-27', '2021-10-28', '2021-10-29', '2021-10-30'] # weekly time frame
 df = pd.DataFrame(data='No Event', index=hourly_index, columns=columns) # initializes empty calendar with hourly_index and columns (dates) indices
-
 
 week_start = dt.date(2021, 10, 24) # global variable to declare current_day
 week_end = dt.date(2021, 10, 30)
-
-
 
 def test_allocation(event_name, deadline, time_needed, chunks): # for one event; later take in df with these inputs
     # function will return vector of format [event_name, date, start_time, end_time]
@@ -24,13 +21,6 @@ def test_allocation(event_name, deadline, time_needed, chunks): # for one event;
     list_date_times = get_date_and_times(number_of_chunks, deadline, event_name)
 
     return list_date_times
-
-
-
-
-
-
-
 
 # Helper Methods
 
@@ -66,13 +56,12 @@ def get_date_and_times(number_of_chunks, deadline, event_name):
             for j in range(len(hourly_index)): # number of hours
                 if df.iloc[i][j] == 'No Event':
                     df.iloc[i][j] = event_name # write into the df; avoids overwriting
-                    element = [event_name, columns[i], hourly_index[j]]
+                    element = [event_name, columns[i], int(hourly_index[j])]
                     list_date_times.append(element)
                     number_of_chunks -= 1 # decrement number of chunks
                     break
 
     return list_date_times
 
-
 # Scripting
-print(test_allocation("Hackathon", "2021-10-26", 4, 1))
+print(test_allocation("Hackathon", "2021-10-27", 3, 1))
