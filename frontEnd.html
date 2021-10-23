@@ -2,9 +2,28 @@
 <html>
 <body>
 
-  <h2>What is the name of your assignment?</h2>
-
+  <!-- <h2>What is the name of your assignment?</h2>
   <form action="/action_page.php" target="_blank" method="post">
+    <label for="assignment">Assignment Name:</label>
+    <input type="text" id="assignment" name="assignment"<br>
+  <h2>When is the deadline?</h2>
+    <label for="deadline">Deadline:</label>
+    <input type="date" id="deadline" name="deadline"<br>
+  <h2>How much time will the assignment take?</h2>
+    <label for="durationTime">Duration (hours):</label>
+    <input type="number" min="1" step="1" id="durationTime" name="durationTime"<br>
+  <h2>Would you like to break it into chunks?</h2>
+    <label for="chunks">Chunks:</label>
+    <select id="chunks" name="chunks">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+  </form>
+  <input type="submit" value="Submit"> -->
+
+  <h2 style="text-align: center;">What is the name of your assignment?</h2>
+
+  <form action="/action_page.php" target="_blank" method="post" style="text-align: center;">
     <label for="assignment">Assignment Name:</label>
     <input type="text" id="assignment" name="assignment"<br>
     <input type="submit" value="Submit">
