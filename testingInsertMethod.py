@@ -34,7 +34,9 @@ def main():
             token.write(creds.to_json())
 
     service = build('calendar', 'v3', credentials=creds)
+    #print("accessed calendar")
 
 
     if __name__ == '__main__':
         main()
+        print('accessed calendar')
