@@ -7,12 +7,21 @@ import codecs
 
 app = Flask(__name__)
 app.config["DEBUG"] = True # set to True while debugging
+facts = 10
 
 # code goes here
-@app.route('/json-example', methods=['POST']) # link to front end
-def json_example():
+@app.route('/time-allocation', methods=['POST']) # link to front end
+def time_allocation():
     data = request.json["name"]
-    return data
+    a = [request.json["name"], request.json["age"]]
+    print(a)
+    print(facts)
+    return data # doesn't matter what returns here as what we return to front end doesn't matter
+
+
+
+
+# Helper Methods
 
 
 
