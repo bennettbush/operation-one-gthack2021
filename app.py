@@ -37,14 +37,25 @@ def start():
     service = build('calendar', 'v3', credentials=creds)
     return service
 
-def insert(credentials):
-    
+# name and date are strings, startTime integer
+def insert(service, name, date, startTime):  
+    la = date + 'T' + str(startTime) + ":00:00-04:00"
+    la2 = date + 'T' + str(startTime + 1) + ":00:00-04:00"
 
-
-
+    event = {
+        'summary': name,
+        'start': {
+            'dateTime': la,
+        },
+        'end': {
+            'dateTime': la2,
+        },
+    }
+    event = service.events().insert(calendarId='primary', body=event).execute()
 
 
 
 if __name__ == '__main__':
     credentials = start()
+    # run insert method here with necessary input
 

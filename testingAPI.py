@@ -29,20 +29,21 @@ def main():
 
 
 
-def insertsomething(service):  
+def insertsomething(service, name, date, startTime):  
+    la = date + 'T' + str(startTime) + ":00:00-04:00"
+    la2 = date + 'T' + str(startTime + 1) + ":00:00-04:00"
+
     event = {
-        'summary': 'Sleep now, work later',
+        'summary': name,
         'start': {
-            'dateTime': '2021-10-24T13:00:00-04:00',
+            'dateTime': la,
         },
         'end': {
-            'dateTime': '2021-10-24T14:00:00-04:00',
+            'dateTime': la2,
         },
     }
-
     event = service.events().insert(calendarId='primary', body=event).execute()
-    print('somehow working')
 
 if __name__ == '__main__':
     needThis = main()
-    insertsomething(needThis)
+    insertsomething(needThis, "Testing always", "2021-10-25",14)
