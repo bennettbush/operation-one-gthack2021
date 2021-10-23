@@ -1,6 +1,3 @@
-
-
-
 from __future__ import print_function
 import datetime
 import os.path
@@ -10,6 +7,7 @@ from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 
 import test_allocation_local
+import start as st
 
 # import pandas as pd
 # import numpy as np
@@ -22,22 +20,22 @@ import test_allocation_local
 
 SCOPES = ['https://www.googleapis.com/auth/calendar']
 
-def start():
-    creds = None
-    if os.path.exists('token.json'):
-        creds = Credentials.from_authorized_user_file('token.json', SCOPES)
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                'credentials.json', SCOPES)
-            creds = flow.run_local_server(port=0)
-        with open('token.json', 'w') as token:
-            token.write(creds.to_json())
+# def start():
+#     creds = None
+#     if os.path.exists('token.json'):
+#         creds = Credentials.from_authorized_user_file('token.json', SCOPES)
+#     if not creds or not creds.valid:
+#         if creds and creds.expired and creds.refresh_token:
+#             creds.refresh(Request())
+#         else:
+#             flow = InstalledAppFlow.from_client_secrets_file(
+#                 'credentials.json', SCOPES)
+#             creds = flow.run_local_server(port=0)
+#         with open('token.json', 'w') as token:
+#             token.write(creds.to_json())
 
-    service = build('calendar', 'v3', credentials=creds)
-    return service
+#     service = build('calendar', 'v3', credentials=creds)
+#     return service
 
 def insertMain(service, arrayData):
     for event in arrayData:
@@ -69,8 +67,9 @@ def insert(service, name, date, startTime):
 
 
 if __name__ == '__main__':
-    credentials = start()
-    test = test_allocation_local.test_allocation('testing', '2021-10-27', 3, 1)
+    credentials = st.initialize()
+    #credentials = start()
+    test = test_allocation_local.test_allocation('testing1', '2021-10-27', 3, 1)
     #print(test)
     insertMain(credentials,test)
     
