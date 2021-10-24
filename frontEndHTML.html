@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h2 style="text-align: center;">What is the name of your assignment?</h2>
+
+  <form id='nameForm' action="" style="text-align: center;">
+    <label for="assignment">Assignment Name:</label>
+    <input type="text" id="assignment" name="assignment"<br>
+  </form>
+
+
+<h1>Create textbox</h1>
+
+<script>
+
+  let btn = document.createElement("button");
+  btn.innerHTML = "Submit";
+  btn.addEventListener("click", function(event) {
+    var assignment = document.getElementById('assignment').value;
+    alert(assignment + "Your submission has been entered.");
+  });
+  document.body.appendChild(btn);
+</script>
+
+
+
+    <input id="text1" placeholder="Enter anything">
+</body>
+</html>
