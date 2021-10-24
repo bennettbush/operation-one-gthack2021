@@ -1,40 +1,57 @@
 <!DOCTYPE html>
 <html>
-<body>
+<body style="background-color:black;">
 
-  <h2 style="text-align: center;">What is the name of your assignment?</h2>
+  <h1 style="color: white; font-family:helvetica; font-size:70px; text-align:center; margin-top:40px; margin-bottom:10px;">FXMA.</h1>
+
+  <i><h2 style="color: white; font-family:helvetica; font-size:40px; text-align:center; margin-top:0px; margin-bottom:40px; font-weight:normal;">Enhance your daily routine.</h1></i>
+
+  <!-- <h3 style="color:white; font-family:helvetica; font-size:30px; text-align:center; font-weight:normal;"
+    >Optimize your weekly schedule and manage your time through Project Name.</h3> -->
+
+    <p></p>
+
+  <h4 style="color:white; font-family:helvetica; font-size:20px; text-align: center; font-weight:normal;">What is the name of your assignment?</h4>
 
   <form action="" style="text-align: center;">
-    <label for="assignment">Assignment Name:</label>
-    <input type="text" id="assignment" name="assignment"<br>
+    <!-- <label style="color:white; font-family:helvetica; font-size:15px;" for="assignment">Assignment Name:</label> -->
+    <input style="font-family:helvetica; font-size:20px;" type="text" id="assignment" name="assignment"<br>
   </form>
 
-  <h2 style="text-align: center;">When is the deadline?</h2>
+  <h4 style="color:white; font-family:helvetica; font-size:20px; text-align: center; font-weight:normal;">When is the deadline?</h4>
 
   <form action="" style="text-align: center;">
-    <label for="deadline">Deadline:</label>
-    <input type="date" id="deadline" name="deadline"<br>
+    <!-- <label for="deadline">Deadline:</label> -->
+    <input style="font-family:helvetica; font-size:20px;" type="date" id="deadline" name="deadline"<br>
   </form>
 
-  <h2 style="text-align: center;">How much time will the assignment take?</h2>
+  <h4 style="color:white; font-family:helvetica; font-size:20px; text-align: center; font-weight:normal;">How many hours will the assignment take?</h4>
   <form action="" style="text-align: center;">
-    <label for="durationTime">Duration (hours):</label>
-    <input type="number" min="1" step="1" id="durationTime" name="durationTime"<br>
+    <!-- <label for="durationTime">Duration (hours):</label> -->
+    <input style="font-family:helvetica; font-size:20px;" type="number" min="1" step="1" id="durationTime" name="durationTime"<br>
   </form>
 
-  <h2 style="text-align: center;">Would you like to break it into chunks?</h2>
+  <h4 style="color:white; font-family:helvetica; font-size:20px; text-align: center; font-weight:normal;">Would you like to break it into chunks?</h4>
   <form action="" style="text-align: center;">
-    <label for="chunks">Chunks:</label>
-    <select id="chunks" name="chunks">
+    <!-- <label for="chunks">Chunks:</label> -->
+    <select id="chunks" name="chunks" style="font-family:helvetica; font-size:20px;">
       <option value="1">Yes</option>
       <option value="0">No</option>
     </select>
+
+    <br></br>
+
   </form>
 
   <script>
     var baseURL = 'https://calendar-optimization.herokuapp.com/time-allocation';
     let btn = document.createElement("button");
-    btn.innerHTML = "Submit";
+    btn.style.fontSize = '25px';
+    btn.style.position = "absolute";
+    btn.style.left = "50%";
+    btn.style.transform = "translateX(-50%)";
+    // btn.style.backgroundColor = "white"
+    btn.innerHTML = "SUBMIT";
     btn.addEventListener("click", function(event) {
       var assignment = document.getElementById('assignment').value;
       var deadline = document.getElementById('deadline').value;
