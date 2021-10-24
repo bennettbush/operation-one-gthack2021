@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+  <h2 style="text-align: center;">What is the name of your assignment?</h2>
+
+  <form action="" style="text-align: center;">
+    <label for="assignment">Assignment Name:</label>
+    <input type="text" id="assignment" name="assignment"<br>
+  </form>
+
+  <h2 style="text-align: center;">When is the deadline?</h2>
+
+  <form action="" style="text-align: center;">
+    <label for="deadline">Deadline:</label>
+    <input type="date" id="deadline" name="deadline"<br>
+  </form>
+
+  <h2 style="text-align: center;">How much time will the assignment take?</h2>
+  <form action="" style="text-align: center;">
+    <label for="durationTime">Duration (hours):</label>
+    <input type="number" min="1" step="1" id="durationTime" name="durationTime"<br>
+  </form>
+
+  <h2 style="text-align: center;">Would you like to break it into chunks?</h2>
+  <form action="" style="text-align: center;">
+    <label for="chunks">Chunks:</label>
+    <select id="chunks" name="chunks">
+      <option value="1">Yes</option>
+      <option value="0">No</option>
+    </select>
+  </form>
+
+  <script>src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"</script>
+  <script>
+
+    fetch('http://127.0.0.1:5000/frontEnd/allocate', {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+              'Content-Type': 'multipart/form-data'
+        },
+        body: formData
+    })
+
+
+  </script>
+
+<script>
+const toSend = {
+  name: "Bennett",
+  age: 35,
+  occupation: "Web Developer"
+};
+
+const jsonString = JSON.stringify(toSend);
+console.log(jsonString)
+
+
+</script>
+
+
+
+
+
+
+  <!-- <script>
+  var name = window.prompt("Enter your name: ");
+  let btn = document.createElement("button");
+  btn.innerHTML = "Submit";
+  btn.addEventListener("click", function(event) {
+    alert(this.value + "Your submission has been entered.");
+  });
+  document.body.appendChild(btn);
+
+  document.getElementById("assignment")
+  </script> -->
+
+</body>
+</html>

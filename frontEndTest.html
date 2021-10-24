@@ -1,0 +1,22 @@
+
+  <body>
+   <h1> Please Fucking Work </h1>
+   <script>
+  var payload = {
+    a: 1,
+    b: 2
+  };
+
+  var data = new FormData();
+  data.append( "json", JSON.stringify( payload ) );
+
+  fetch("http://127.0.0.1:5000/frontEnd/allocate",
+  {
+    method: "POST",
+    body: data,
+    headers: {'Content-Type': 'multipart/form-data'}
+  })
+   .then(function(res){return res.json();})
+   .then(function(data){alert( JSON.stringify(data))})
+ </script>
+  </body>
