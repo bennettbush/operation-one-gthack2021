@@ -48,7 +48,7 @@ def put_task(event_name, deadline, num_blocks, dataframe): #takes information in
             if (count > 0):
                 if (dataframe.iloc[i][j] == "No Event"):
                     dataframe.iloc[i][j] = event_name
-                    event_list += [[col_loc2[j], row_loc2[j]]] 
+                    event_list += [[event_name, col_loc2[j], row_loc2[i], row_loc2[i+1]]] 
                     count -= 1
             else:
                 break
