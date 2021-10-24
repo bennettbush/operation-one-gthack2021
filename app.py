@@ -23,8 +23,6 @@ def time_allocation():
     return '0' # doesn't matter what returns here as what we return to front end doesn't matter
 
 
-
-
 # Helper Methods
 def wrangle_js_data(bytes): # turns bytes of data from request.get_data() into class dict
     string = str(bytes)
