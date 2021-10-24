@@ -15,23 +15,21 @@ app.config["DEBUG"] = True # set to True while debugging
 @app.route('/frontEnd/allocate', methods=['POST']) # link to front end
 def time_allocation():
     req = request.get_data()
-    work2 = str(req)
-    #ind1 = str(req).find('{')
-    #ind2 = str(req).find('}')
-    #work = str(req)[ind1:(ind2 + 1)]
-    # print(work2)
-    ind1 = work2.find('{')
-    ind2 = work2.find('}')
-    work = work2[ind1:(ind2 + 1)]
-    print(work)
+    dict_req = wrangle_js_data(req)
+    print(dict_req)
     return '0' # doesn't matter what returns here as what we return to front end doesn't matter
 
 
 
 
 # Helper Methods
-
-
+def wrangle_js_data(bytes): # turns bytes of data from request.get_data() into class dict
+    string = str(bytes)
+    ind1 = string.find('{')
+    ind2 = string.find('}')
+    string = string[ind1:(ind2+1)]
+    dict = json.loads(string) # turns {string} into a dict
+    return dict
 
 if __name__ == '__main__':
     app.run()
