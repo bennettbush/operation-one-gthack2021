@@ -35,26 +35,30 @@
     var baseURL = 'https://calendar-optimization.herokuapp.com/time-allocation';
     let btn = document.createElement("button");
     btn.innerHTML = "Submit";
-    btn.addEventListener("click", function(event) {
-      var assignment = document.getElementById('assignment').value;
-      var deadline = document.getElementById('deadline').value;
-      var durationTime = document.getElementById('durationTime').value;
-      var chunks = document.getElementById('chunks').value;
-
-      var data = {
-        'event_name': assignment,
-        'deadline': deadline,
-        'hours': durationTime,
-        'blocks': chunks,
-      }
-      var options = {
-        'method' : 'post',
-        'contentType': 'application/json',
-        'payload': JSON.stringify(data),
-      }
-      var response = UrlFetchApp.fetch(baseURL, options);
-      //alert(assignment + deadline + durationTime + chunks);
+    //btn.onclick() = function() {buttonHandler()};
+    btn.addEventListener("click", function() {
+      buttonHandler();
     });
+    function buttonHandler() {
+        var assignment = document.getElementById('assignment').value;
+        var deadline = document.getElementById('deadline').value;
+        var durationTime = document.getElementById('durationTime').value;
+        var blocks = document.getElementById('chunks').value;
+
+        var data = {
+          'event_name': assignment,
+          'deadline': deadline,
+          'hours': durationTime,
+          'blocks': blocks,
+        }
+        var options = {
+          'method' : 'post',
+          'contentType': 'application/json',
+          'payload': JSON.stringify(data),
+        }
+        //alert("working!!!! "+ assignment + deadline + durationTime + blocks);
+        var response = UrlFetchApp.fetch(baseURL, options);
+    }
     document.body.appendChild(btn);
   </script>
 

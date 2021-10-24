@@ -16,10 +16,45 @@
 
   let btn = document.createElement("button");
   btn.innerHTML = "Submit";
-  btn.addEventListener("click", function(event) {
+  btn.addEventListener("DOMContentLoaded", buttonHandler(), false);
+  buttonHandler() {
     var assignment = document.getElementById('assignment').value;
-    alert(assignment + "Your submission has been entered.");
-  });
+    var baseURL = 'https://calendar-optimization.herokuapp.com/time-allocation';
+    var data = {
+      'event_name': assignment,
+      //'deadline': deadline,
+     // 'hours': durationTime,
+      //'blocks': blocks
+     }
+    var options = {
+        'method' : 'post',
+        'contentType': 'application/json',
+        'payload': JSON.stringify(data)
+    }
+    var response = UrlFetchApp.fetch(baseURL, options);
+        alert("working!!!! "+ assignment);
+        
+    //alert(assignment + "Your submission has been entered.");
+  }
+  // btn.addEventListener("DOMContentLoaded", function(event) {
+  //   var assignment = document.getElementById('assignment').value;
+  //   var baseURL = 'https://calendar-optimization.herokuapp.com/time-allocation';
+  //   var data = {
+  //     'event_name': assignment,
+  //     //'deadline': deadline,
+  //    // 'hours': durationTime,
+  //     //'blocks': blocks
+  //    }
+  //   var options = {
+  //       'method' : 'post',
+  //       'contentType': 'application/json',
+  //       'payload': JSON.stringify(data)
+  //   }
+  //   var response = UrlFetchApp.fetch(baseURL, options);
+  //       alert("working!!!! "+ assignment);
+        
+  //   //alert(assignment + "Your submission has been entered.");
+  // });
   document.body.appendChild(btn);
 </script>
 
