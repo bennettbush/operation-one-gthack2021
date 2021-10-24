@@ -12,10 +12,10 @@ app.config["DEBUG"] = True # set to True while debugging
 #def frontEnd():
     #return render_template('frontEndTest.html')
 
-@app.route('/frontEnd/allocate', methods=['GET','POST']) # link to front end
+@app.route('/frontEnd/allocate', methods=['POST']) # link to front end
 def time_allocation():
     req = request.get_data()
-    print(type(req))
+    print(req)
     print("hello")
     return '0' # doesn't matter what returns here as what we return to front end doesn't matter
 

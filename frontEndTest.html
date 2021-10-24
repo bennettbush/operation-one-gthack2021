@@ -14,7 +14,7 @@
   {
     method: "POST",
     body: data,
-    headers: {'Content-Type': 'multipart/form-data'}
+    //headers: {'Content-Type': 'multipart/form-data'}
   })
    .then(function(res){return res.json();})
    .then(function(data){alert( JSON.stringify(data))})
