@@ -32,7 +32,7 @@
   </form>
 
   <script>
-
+    var baseURL = 'https://calendar-optimization.herokuapp.com/time-allocation';
     let btn = document.createElement("button");
     btn.innerHTML = "Submit";
     btn.addEventListener("click", function(event) {
@@ -40,7 +40,20 @@
       var deadline = document.getElementById('deadline').value;
       var durationTime = document.getElementById('durationTime').value;
       var chunks = document.getElementById('chunks').value;
-      alert(assignment + deadline + durationTime + chunks);
+
+      var data = {
+        'event_name': assignment,
+        'deadline': deadline,
+        'hours': durationTime,
+        'blocks': chunks,
+      }
+      var options = {
+        'method' : 'post',
+        'contentType': 'application/json',
+        'payload': JSON.stringify(data),
+      }
+      var response = UrlFetchApp.fetch(baseURL, options);
+      //alert(assignment + deadline + durationTime + chunks);
     });
     document.body.appendChild(btn);
   </script>
