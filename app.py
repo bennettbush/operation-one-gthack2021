@@ -14,7 +14,7 @@ def time_allocation():
     req = request.get_data()
     dict_req = wrangle_js_data(req)
     arra_req = toArray(dict_req)
-    print(arra_req)
+    print(arra_req) # comment this out later
     return '0' # doesn't matter what returns here as what we return to front end doesn't matter
 
 
