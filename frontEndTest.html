@@ -3,8 +3,10 @@
    <h1> Please Fucking Work </h1>
    <script>
   var payload = {
-    a: 1,
-    b: 2
+    "event_name": "Hackathon",
+    "deadline": "2021-10-26",
+    "hours": "4",
+    "blocks": "1"
   };
 
   var data = new FormData();
@@ -16,7 +18,7 @@
     body: data,
     //headers: {'Content-Type': 'multipart/form-data'}
   })
-   .then(function(res){return res.json();})
-   .then(function(data){alert( JSON.stringify(data))})
+   //.then(function(res){return res.json();})
+   //.then(function(data){alert( JSON.stringify(data))})
  </script>
   </body>

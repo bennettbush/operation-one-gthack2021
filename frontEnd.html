@@ -31,35 +31,30 @@
     </select>
   </form>
 
-  <script>src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"</script>
   <script>
+    let btn = document.createElement("button");
+    btn.innerHTML = "Submit";
+    btn.addEventListener("click", function(event) {
+      var payload = {
+        "event_name": "Hackathon",
+        "deadline": "2021-10-26",
+        "hours": "4",
+        "blocks": "1"
+      };
 
-    fetch('http://127.0.0.1:5000/frontEnd/allocate', {
-        method: 'post',
-        headers: {
-            'Accept': 'application/json',
-              'Content-Type': 'multipart/form-data'
-        },
-        body: formData
-    })
+      var data = new FormData();
+      data.append( "json", JSON.stringify( payload ) );
 
-
+      fetch("http://127.0.0.1:5000/frontEnd/allocate",
+      {
+        method: "POST",
+        body: data,
+        //headers: {'Content-Type': 'multipart/form-data'}
+      })
+      alert(assignment + deadline + durationTime + chunks);
+    });
+    document.body.appendChild(btn);
   </script>
-
-<script>
-const toSend = {
-  name: "Bennett",
-  age: 35,
-  occupation: "Web Developer"
-};
-
-const jsonString = JSON.stringify(toSend);
-console.log(jsonString)
-
-
-</script>
-
-
 
 
 
